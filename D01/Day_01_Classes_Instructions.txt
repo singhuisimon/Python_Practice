@@ -1,0 +1,63 @@
+Exercise 4 — Library System
+Build two classes: Book and Library. A library contains many books, similar to how your list of students contained many student objects.
+Book class
+Attributes:
+
+title (string)
+author (string)
+is_borrowed (boolean — starts as False)
+
+Methods:
+
+borrow() — if the book is not already borrowed, mark it as borrowed and return a message like "You borrowed 'The Hobbit'.". If it's already borrowed, return "'The Hobbit' is already borrowed.".
+return_book() — mark it as not borrowed and return "You returned 'The Hobbit'.". (We can't name it just return because that's a Python keyword.)
+describe() — return a string like "'The Hobbit' by J.R.R. Tolkien (Available)" or "'The Hobbit' by J.R.R. Tolkien (Borrowed)".
+
+Library class
+Attributes:
+
+name (string — the library's name)
+books (list — starts empty)
+
+Methods:
+
+add_book(book) — takes a Book object and appends it to self.books.
+find_book(title) — searches self.books for a book with that title. Returns the book object if found, otherwise returns None.
+list_available() — returns a list of titles of books that aren't currently borrowed.
+list_borrowed() — returns a list of titles of books that are currently borrowed.
+
+Test code to run at the bottom
+pythonlib = Library("City Library")
+lib.add_book(Book("The Hobbit", "J.R.R. Tolkien"))
+lib.add_book(Book("1984", "George Orwell"))
+lib.add_book(Book("Dune", "Frank Herbert"))
+
+# Borrow one book
+hobbit = lib.find_book("The Hobbit")
+print(hobbit.borrow())          # You borrowed 'The Hobbit'.
+print(hobbit.borrow())          # 'The Hobbit' is already borrowed.
+
+# Check the lists
+print(lib.list_available())     # ['1984', 'Dune']
+print(lib.list_borrowed())      # ['The Hobbit']
+
+# Return it
+print(hobbit.return_book())     # You returned 'The Hobbit'.
+print(lib.list_available())     # ['The Hobbit', '1984', 'Dune']
+
+# Look up something that doesn't exist
+print(lib.find_book("Nonexistent"))   # None
+
+Hints (only peek if stuck)
+For borrow() and return_book(), you'll want an if/else checking self.is_borrowed.
+For find_book, loop over self.books with a for loop. When you find a match, return it immediately. If the loop finishes without finding one, return None after the loop.
+For list_available and list_borrowed, you can use a list comprehension: [b.title for b in self.books if not b.is_borrowed]. Or a regular for loop with .append() if that's clearer.
+Book doesn't need is_borrowed as an __init__ parameter — set it to False directly inside __init__, since every new book starts as not borrowed.
+
+What's new in this exercise
+Default attribute values: self.is_borrowed = False is set without being passed in.
+Boolean attributes and toggling them.
+One class holding instances of another class. Library.books is a list of Book objects — you can call .borrow() on items inside that list.
+Returning None to mean "not found", a very common Python pattern.
+
+Give it a shot and share what you come up with — even if it's broken, that's where the learning happens. I'll review it.

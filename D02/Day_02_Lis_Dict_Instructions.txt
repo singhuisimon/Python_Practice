@@ -1,0 +1,84 @@
+Lists and Dictionaries — No Classes
+
+Create a new file day04_collections.py. Three exercises, build up in difficulty.
+
+Exercise 1 — List basics
+
+numbers = [4, 8, 15, 16, 23, 42]
+
+Write code (no functions, just script) that:
+
+	1.	Prints the first and last elements
+	2.	Prints every element doubled, using a list comprehension
+	3.	Prints only the even numbers, using a list comprehension with a filter
+	4.	Sorts the list in descending order and prints it
+	5.	Adds the number 100 to the end, removes 15, then prints the final list
+
+Exercise 2 — Word counter
+
+Write a function count_words(text) that takes a string and returns a dictionary mapping each word to how many times it appears.
+
+def count_words(text):
+    # your code here
+    pass
+
+# Test
+text = "the quick brown fox jumps over the lazy dog the fox is quick"
+result = count_words(text)
+print(result)
+# Expected: {'the': 3, 'quick': 2, 'brown': 1, 'fox': 2, ...}
+
+
+Hints:
+
+	•	Use text.split() to get a list of words
+	•	Loop through the list, build a dict
+	•	Use dict.get(word, 0) to handle “not seen yet” cleanly: 
+		counts[word] = counts.get(word, 0) + 1
+
+Then write a second function top_n_words(counts, n) that returns the top n most common words as a list of (word, count) tuples, sorted by count descending.
+
+Hint: sorted(counts.items(), key=lambda item: item[1], reverse=True)[:n]
+
+Test:
+
+print(top_n_words(result, 3))
+# Expected: [('the', 3), ('quick', 2), ('fox', 2)]
+
+
+Exercise 3 — Inventory system
+
+Build a simple inventory using a dictionary where keys are product names and values are dicts with price and quantity.
+
+inventory = {}
+
+
+Write these functions:
+
+	1.	add_product(inventory, name, price, quantity) — adds or updates a product
+	2.	remove_product(inventory, name) — removes a product if it exists, returns True/False
+	3.	total_value(inventory) — returns the total value (sum of price × quantity across all products)
+	4.	low_stock(inventory, threshold) — returns a list of product names with quantity below the threshold
+
+Test it:
+
+inv = {}
+add_product(inv, "apple", 0.50, 100)
+add_product(inv, "bread", 2.50, 5)
+add_product(inv, "milk", 3.00, 2)
+
+print(total_value(inv))          # Expected: 70.5
+print(low_stock(inv, 10))        # Expected: ['bread', 'milk']
+remove_product(inv, "apple")
+print(inv)                        # apple should be gone
+
+
+When you’re done:
+
+	1.	Read every line of output and check it matches expected (the habit we talked about)
+	2.	Send me the code
+	3.	Commit and push
+
+If something breaks, send me the code anyway — debugging together is better learning than getting it right alone.
+
+Also: that list_borrowed == True is still sitting there in the previous file. When you commit today’s work, fix that too.
