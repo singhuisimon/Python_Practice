@@ -1,0 +1,62 @@
+New exercise — Combining what you’ve learned
+
+This uses classes + dicts + lists together, which is what real code looks like.
+
+Build a Contact Book
+
+Class Contact with:
+
+	•	name (string)
+	•	phone (string)
+	•	email (string)
+	•	A method describe() that returns a formatted string like "Alice — phone: 91234567, email: alice@mail.com"
+
+Class ContactBook with:
+
+	•	contacts — a dictionary where keys are names (lowercase) and values are Contact objects
+	•	add(contact) — adds the contact. If name already exists, return "Contact already exists", otherwise add and return "Contact added"
+	•	remove(name) — removes by name (case-insensitive). Return True if removed, False if not found
+	•	find(name) — case-insensitive lookup. Returns the Contact object or None
+	•	search_by_partial_name(query) — returns a list of Contact objects whose name contains the query (case-insensitive). Example: searching “al” returns Alice and Albert.
+	•	list_all() — returns a list of all contacts sorted alphabetically by name
+
+Test code:
+
+book = ContactBook()
+
+print(book.add(Contact("Alice", "91234567", "alice@mail.com")))  # Contact added
+print(book.add(Contact("Bob", "82345678", "bob@mail.com")))      # Contact added
+print(book.add(Contact("Albert", "73456789", "albert@mail.com")))# Contact added
+print(book.add(Contact("Alice", "00000000", "fake@mail.com")))   # Contact already exists
+
+# Find
+print(book.find("ALICE").describe())   # Alice — phone: 91234567, email: alice@mail.com
+print(book.find("Charlie"))            # None
+
+# Partial search
+results = book.search_by_partial_name("al")
+for c in results:
+    print(c.describe())
+# Should print Alice and Albert
+
+# Remove
+print(book.remove("bob"))   # True
+print(book.remove("xyz"))   # False
+
+# List all
+for c in book.list_all():
+    print(c.name)
+# Should print: Albert, Alice  (alphabetical)
+
+
+Hints (only peek if stuck):
+
+	•	For case-insensitive lookups, store the dict key as name.lower() but keep the original name on the Contact object
+	•	For search_by_partial_name, use query.lower() in contact.name.lower()
+	•	For list_all, use sorted(self.contacts.values(), key=lambda c: c.name)
+
+Important constraint for today:
+
+Try this without checking solutions or asking me for hints first. Get stuck, sit with it for 5 minutes, try things, read the error messages. That struggle is where learning happens. Only ping me if you’re properly stuck after trying.
+
+Send me the code when done. And do the 4 cleanup fixes from yesterday too — don’t skip those.

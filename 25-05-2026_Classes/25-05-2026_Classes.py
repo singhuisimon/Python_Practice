@@ -117,30 +117,30 @@ class Library:
 # ========================== Test ===============================
 
 # Test Exercise 1 - Dog
-my_dog = Dog("Buddy", "Golden Retriever", 3)
-print(my_dog.bark())
-print(my_dog.describe())
+# my_dog = Dog("Buddy", "Golden Retriever", 3)
+# print(my_dog.bark())
+# print(my_dog.describe())
         
-# Test Exercise 2 - Bank Account
-my_acc = BankAccount("Simon", 10000)
-print(my_acc.deposit(10000))
-print(my_acc.withdraw(50000))
-print(my_acc.check_balance())
+# # Test Exercise 2 - Bank Account
+# my_acc = BankAccount("Simon", 10000)
+# print(my_acc.deposit(10000))
+# print(my_acc.withdraw(50000))
+# print(my_acc.check_balance())
 
-# Test Exercise 3 - Student Class
-students = [
-    Student("Alice", 16),
-    Student("Bob", 17),
-    Student("Carol", 16),
-]
+# # Test Exercise 3 - Student Class
+# students = [
+#     Student("Alice", 16),
+#     Student("Bob", 17),
+#     Student("Carol", 16),
+# ]
 
-students[0].add_score(85)
-students[1].add_score(60)
-students[1].add_score(65)
-students[2].add_score(45)
+# students[0].add_score(85)
+# students[1].add_score(60)
+# students[1].add_score(65)
+# students[2].add_score(45)
 
-for s in students:
-    print(s.name, s.average(), s.grade)
+# for s in students:
+#     print(s.name, s.average(), s.grade)
 
 # Test Exercise 4 - Book + Library
 

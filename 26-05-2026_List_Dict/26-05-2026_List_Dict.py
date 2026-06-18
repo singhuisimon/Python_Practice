@@ -6,22 +6,22 @@
 # 5.	Adds the number 100 to the end, removes 15, then prints the final list
 numbers = [4, 8, 15, 16, 23, 42]
 def first_and_last(nums):
-    print(nums[0], nums[-1])
+    return nums[0], nums[-1]
     
 def double(nums):
-    print([n * 2 for n in nums])
+    return [n * 2 for n in nums]
 
 def find_even(nums):
-    print([n for n in nums if n % 2 == 0])
+    return [n for n in nums if n % 2 == 0]
 
 def sort_desc(nums):
-    nums.sort(reverse = True)
-    print(nums)
+    new_nums = sorted(nums, reverse = True)
+    return new_nums
 
 def modify_number(nums):
     nums.append(100)
     nums.remove(15)
-    print(nums)
+    return nums
 
 # Exercise 2 — Word counter
 # Write a function count_words(text) that takes a string and returns a dictionary mapping each word to how many times it appears.
@@ -30,13 +30,13 @@ def modify_number(nums):
 #     pass
 def count_words(text):
     words = text.split()
-    d = {}
+    counts = {}
     for word in words:
-        d[word] = d.get(word, 0) + 1
-    return d
+        counts[word] = counts.get(word, 0) + 1
+    return counts
 # Then write a second function top_n_words(counts, n) that returns the top n most common words as a list of (word, count) tuples, sorted by count descending.
-def top_n_words(d, n):
-    return sorted(d.items(), key=lambda item: item[1], reverse=True)[:n]
+def top_n_words(counts, n):
+    return sorted(counts.items(), key=lambda item: item[1], reverse=True)[:n]
 
 # Exercise 3 — Inventory system
 # Build a simple inventory using a dictionary where keys are product names and values are dicts with price and quantity.
@@ -71,27 +71,27 @@ def low_stock(inventory, threshold):
 
 def remove_product_price(inventory, price):
     # list out all items to another list
-    to_remove = [name for name, item in inventory.items() if item["price"] == 0.50]
+    to_remove = [name for name, item in inventory.items() if item["price"] == price]
     for name in to_remove:
         del inventory[name]
 
 # ===================== Test ========================
 
 # Exercise 1
-# first_and_last(numbers)
-# double(numbers)
-# find_even(numbers)
-# sort_desc(numbers)
-# modify_number(numbers)
+print(first_and_last(numbers))
+print(double(numbers))
+print(find_even(numbers))
+print(sort_desc(numbers))
+print(modify_number(numbers))
 
 # Exercise 2
-# # Test
-# text = "the quick brown fox jumps over the lazy dog the fox is quick"
-# result = count_words(text)
-# print(result)
-# # Expected: {'the': 3, 'quick': 2, 'brown': 1, 'fox': 2, ...}
+# Test
+text = "the quick brown fox jumps over the lazy dog the fox is quick"
+result = count_words(text)
+print(result)
+# Expected: {'the': 3, 'quick': 2, 'brown': 1, 'fox': 2, ...}
 # Test:
-# print(top_n_words(result, 3))
+print(top_n_words(result, 3))
 # Expected: [('the', 3), ('quick', 2), ('fox', 2)]
 
 # Exercise 3
