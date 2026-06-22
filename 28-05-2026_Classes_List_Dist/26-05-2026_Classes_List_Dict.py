@@ -42,7 +42,7 @@ class ContactBook:
         results = []
         for contact in self.contacts.values():
             if query.lower() in contact.name.lower():
-                results.append(contact.name)
+                results.append(contact)
         return results
     def list_all(self):
         return sorted(self.contacts.values(), key=lambda c: c.name)
