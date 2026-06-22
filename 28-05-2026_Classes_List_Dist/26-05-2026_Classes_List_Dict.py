@@ -29,7 +29,7 @@ class ContactBook:
             return "Contact has been added"
     def remove(self, name):
         if name.lower() in self.contacts.keys():
-            del self.contacts[name]
+            del self.contacts[name.lower()]
             return True
         else:
             return False
@@ -41,7 +41,7 @@ class ContactBook:
     def search_by_partial_name(self, query):
         results = []
         for contact in self.contacts.values():
-            if contact.name.lower() == query.lower():
+            if query.lower() in contact.name.lower():
                 results.append(contact.name)
         return results
     def list_all(self):
